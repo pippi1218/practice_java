@@ -1,7 +1,5 @@
 package shopping;
 
-import java.util.concurrent.CountDownLatch;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -38,6 +36,9 @@ public class Main {
         customer.add(shop, 2);
         customer.add(shop, 3);
 
+        /**
+         * カートの中を表示
+         */
         customer.printMyCart();
     }
 }
