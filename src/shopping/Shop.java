@@ -10,7 +10,7 @@ public class Shop {
     private String name;
 
     /**
-     * 商品リスト
+     * ショップの商品リスト
      */
     private List<Item> listItem = new ArrayList<Item>();
 
@@ -32,11 +32,15 @@ public class Shop {
         listItem.add(item);
     }
 
+    public Item get(int itemNo) {
+        return listItem.get(itemNo);
+    }
+
     /**
      * ショップ名と商品リストを表示
      */
     public void print() {
-        System.out.println("==============================================");
+        System.out.println("=========================================");
         System.out.printf("いらっしゃいませ！%sへようこそ！\n", name);
         System.out.println("【商品リスト】");
 
@@ -47,6 +51,6 @@ public class Shop {
             i++;
         }
 
-        System.out.println("==============================================");
+        System.out.println("=========================================");
     }
 }

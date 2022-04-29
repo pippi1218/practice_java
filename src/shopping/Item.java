@@ -16,6 +16,15 @@ public class Item {
     }
 
     /**
+     * 価格を返す
+     *
+     * @return
+     */
+    public int getPrice() {
+        return price;
+    }
+
+    /**
      * 商品名と価格を表示する
      */
     public void print() {

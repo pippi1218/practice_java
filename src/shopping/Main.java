@@ -1,5 +1,7 @@
 package shopping;
 
+import java.util.concurrent.CountDownLatch;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -21,5 +23,21 @@ public class Main {
          * 商品リストを表示
          */
         shop.print();
+
+        /**
+         * 顧客情報を登録
+         */
+        Customer customer = new Customer("まろん");
+
+        customer.print();
+
+        /**
+         * カートに商品を追加
+         */
+        customer.add(shop, 0);
+        customer.add(shop, 2);
+        customer.add(shop, 3);
+
+        customer.printMyCart();
     }
 }
