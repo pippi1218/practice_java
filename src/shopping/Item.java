@@ -28,7 +28,7 @@ public class Item {
      * 商品名と価格を表示する
      */
     public void print() {
-        System.out.printf("%-8s\t:%-6d円\n", name, price);
+        System.out.printf("%-16s\t:%-6d円\n", name, price);
     }
 
 }

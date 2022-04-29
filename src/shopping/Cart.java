@@ -34,6 +34,9 @@ public class Cart {
         return totalPrice;
     }
 
+    /**
+     * カート内の商品と合計価格を表示
+     */
     public void print() {
 
         if (listItem.size() == 0) {
@@ -42,7 +45,9 @@ public class Cart {
             for (Item item : listItem) {
                 item.print();
             }
+            System.out.println("カート内の商品の合計価格:" + getTotalPrice() + "円");
         }
+
         System.out.println("*****************************************");
     }
 
