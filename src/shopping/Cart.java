@@ -18,6 +18,22 @@ public class Cart {
         listItem.add(item);
     }
 
+    public void remove(int itemNo) {
+        if (0 <= itemNo && itemNo < listItem.size()) {
+            listItem.remove(itemNo);
+        } else {
+            System.out.println("指定された商品番号に該当する商品は商品リストにありません。");
+        }
+
+    }
+
+    /**
+     * カート内の商品リストを空にする
+     */
+    public void clear() {
+        listItem.clear();
+    }
+
     /**
      * カート内の商品の合計価格
      *
@@ -42,8 +58,11 @@ public class Cart {
         if (listItem.size() == 0) {
             System.out.println("カートに商品が入っていません。");
         } else {
+            int i = 0;
             for (Item item : listItem) {
+                System.out.print(i + " ");
                 item.print();
+                i++;
             }
             System.out.println("カート内の商品の合計価格:" + getTotalPrice() + "円");
         }

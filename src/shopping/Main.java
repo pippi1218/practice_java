@@ -33,11 +33,12 @@ public class Main {
         /**
          * 顧客情報を登録
          */
-        Customer customer = new Customer("まろん");
+        Customer customer = new Customer("まろん", 200000);
 
         /**
          * 顧客情報を表示
          */
+        System.out.println("*****************************************");
         customer.print();
 
         /**
@@ -45,18 +46,65 @@ public class Main {
          */
         Scanner scanner = new Scanner(System.in);
 
-        String str;
+        String buyStr;
         int itemNo;
+
+        String returnStr;
+        int returnItemNo;
 
         while (true) {
             try {
-                System.out.print("商品番号(qで買物を終了) ? ");
-                str = scanner.nextLine();
+                System.out.print("商品番号(qで買物を終了/cでカートの中身を表示/rで返品) ? ");
+                buyStr = scanner.nextLine();
 
-                if (str.equals("q")) {
-                    break;
+                if (buyStr.equals("q")) {
+
+                    customer.printMyCart();
+
+                    customer.checkOut();
+
+                    customer.print();
+
+                    continue;
                 }
-                itemNo = Integer.parseInt(str);
+
+                if (buyStr.equals("c")) {
+                    customer.printMyCart();
+                    continue;
+                }
+
+                if (buyStr.equals("r")) {
+                    System.out.println("■ □ ■ □ ■ 現在返品モードです。■ □ ■ □ ■");
+                    customer.printMyCart();
+
+                    while (true) {
+                        try {
+                            System.out.print("返品する商品番号(qで返品を終了) ? ");
+                            returnStr = scanner.nextLine();
+
+                            if (returnStr.equals("q")) {
+                                break;
+                            }
+
+                            returnItemNo = Integer.parseInt(returnStr);
+
+                            customer.remove(returnItemNo);
+                            customer.printMyCart();
+                            continue;
+
+                        } catch (NumberFormatException e) {
+                            System.out.println("数値または指定の文字を入力してください。");
+                            continue;
+                        } catch (NoSuchElementException e) {
+                            break;
+                        }
+                    }
+
+                    System.out.println("■ □ ■ □ ■ 返品モードを解除しました。■ □ ■ □ ■");
+                    continue;
+                }
+
+                itemNo = Integer.parseInt(buyStr);
 
                 if (0 <= itemNo && itemNo < ITEM_NUMBER) {
                     customer.add(shop, itemNo);
@@ -70,12 +118,9 @@ public class Main {
             } catch (NoSuchElementException e) {
                 break;
             }
+
         }
         scanner.close();
 
-        /**
-         * カートの中を表示
-         */
-        customer.printMyCart();
     }
 }
