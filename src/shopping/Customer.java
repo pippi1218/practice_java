@@ -58,7 +58,7 @@ public class Customer {
      */
     public void print() {
         System.out.printf("私の名前は、%sです。\n", name);
-        System.out.printf("所持金は、%dです。\n", money);
+        System.out.printf("所持金は、%d円です。\n", money);
         printMyCart();
     }
 }
